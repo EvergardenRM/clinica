@@ -1,0 +1,28 @@
+{% extends 'plantilla.html' %}
+
+
+{% block contert %}
+<h2> Ingresar Cita  </h2>
+
+    <form method="POST">
+        
+                {% csrf_token %}
+                
+                {% for i in forms %}
+                    <ul class="form-group row">
+                        <ul class="col-sm-2 col-form-label">
+                            {{i.label_tag}}
+                        </ul>              
+                        <ul class="col-sm-3">
+                            {{i}} 
+
+                        </ul>  
+                    </ul>
+
+                {% endfor %}
+                
+                        
+    
+    <button type="submit" class="btn btn-primary">Crear </button>
+</form>
+{% endblock %}

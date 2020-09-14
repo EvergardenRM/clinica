@@ -15,7 +15,7 @@
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href="{% static "css/clean-blog.min.css" %}" rel="stylesheet">
-
+    <link href="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -23,7 +23,7 @@
     <!-- Navegación -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="index.html">John Palomeque</a>
+        <a class="navbar-brand" href="index.html">Clinica</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menú
           <i class="fa fa-bars"></i>
@@ -31,16 +31,19 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Inicio</a>
+              <a class="nav-link" href="index.html">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Acerca de</a>
+              <a class="nav-link" href="{% url 'crear_medico' %}">Medico</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Portafolio</a>
+              <a class="nav-link" href="{% url 'crear_cliente' %}">Cliente</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contacto</a>
+              <a class="nav-link" href="{% url 'crear_cita' %}">Cita</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'vista_especialidad' %}">Especialidad</a>
             </li>
           </ul>
         </div>
@@ -48,19 +51,25 @@
     </nav>
 
     <!-- Cabecera -->
-    <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg'%})">
+    <header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %})">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
-              <h1>John Palomeque</h1>
-              <span class="subheading">Ingeniero de Computacion</span>
+              <h1>Acerca de</h1>
+              <span class="subheading">Biografía</span>
             </div>
           </div>
         </div>
       </div>
     </header>
+
+    <!-- Contenido Principal -->
+    {% block contert %}
+      
+    {% endblock contert %}
+    
 
     <!-- Pié de página -->
     <footer>
@@ -103,7 +112,8 @@
     <script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
     <script src="{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
     <script src="{% static "js/clean-blog.min.js" %}"></script>
-
+    <script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script>
+    
   </body>
 
 </html>

@@ -1,0 +1,45 @@
+{% extends 'plantilla.html' %}
+{%  load static %}
+{% block tema %}<h1>Especialiidad</h1>{% endblock %}
+	    <!-- Contenido Principal -->
+        {% block contert %}
+	    <div class="container">
+        <div class="col-md-13" style="margin-top: 70px;">
+
+            <h2> Especialidades </h2>
+
+            <div class="ml-auto float-right">
+                <h1></h1>
+                <a class="btn btn-primary btn-sm"  role="button" href="{% url 'crear_especialidad' %}">+ Crear un Nuevo Especialidad</a>
+                <h1></h1>
+            </div>
+            <div class="table-responsive ">
+                <table class="table table-striped">
+                    <thead class="bg-info">
+                    <tr>
+                        <th>#</th>
+                        <th>Especialidad </th>
+
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for i in datos %}
+                        <tr>
+                            <td>{{ i.id }}</td>
+                            <td>{{ i.especialidad }}</td>
+
+                            <td><a class="btn-outline-primary btn-sm nav-link" href="{% url 'modificar_especialidad' i.id %}">Editar</a></td>
+                            <td><a class="btn-outline-warning btn-sm nav-link" href="#}">eliminar</a></td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+           
+        </div>
+        </div>	          
+{% endblock %}

@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 class cliente(models.Model):
-    id_cliente = models.CharField(max_length=15)
+    cedula = models.CharField(max_length=15)
     nombres = models.CharField( max_length=50)
     apellidos = models.CharField( max_length=50)
     direccion = models.CharField( max_length=50) 
@@ -37,8 +37,8 @@ class Especializacion(models.Model):
 
 
 class medico(models.Model):
-    id_medico = models.CharField(max_length=15)
-    id_especialida = models.OneToOneField(Especializacion, on_delete=models.CASCADE)
+    cedula = models.CharField(max_length=15)
+    id_especialidad = models.ForeignKey(Especializacion, on_delete=models.CASCADE)
     nombres = models.CharField( max_length=50)
     apellidos = models.CharField( max_length=50)
     direccion = models.CharField( max_length=100)
@@ -52,7 +52,7 @@ class medico(models.Model):
         verbose_name_plural = "medicos"
 
     def __str__(self):
-        return self.nombres + ' ' + self.apellidos + ' ' + self.especialidad
+        return self.nombres + ' ' + self.apellidos 
 
 class cita(models.Model):
     numero_cita = models.CharField(max_length=100)
