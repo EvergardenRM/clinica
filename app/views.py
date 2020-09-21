@@ -64,17 +64,15 @@ def crear_cita(request, base = 'crear_cita.html'):
 
 def modificar_especialidad(request,pk, base = 'modificar_especialidad.html'):
     if request.method =='POST':
-        estado = Especializacion.objects.get(pk=pk)
-        estado.estado = 0
         datos = get_object_or_404(Especializacion,pk=pk)
         formulario = EspecialidadForm(request.POST or None, instance = datos)
-        if form.is_valid():
-            estado.save()
+        if formulario.is_valid():
+            formulario.save()
             return redirect("plantilla")
     else: 
-        entrada = get_object_or_404(Especializacion, pk=pk)
+        datos = get_object_or_404(Especializacion, pk=pk)
         formulario = EspecialidadForm(request.POST or None,  instance = datos)
-    return render(request,plantilla, {'forms':formulario})
+    return render(request,base, {'forms':formulario})
 
 def modificar_cliente(request,pk,base = 'modificar_cliente.html'):
     if request.method =='POST':
@@ -82,12 +80,12 @@ def modificar_cliente(request,pk,base = 'modificar_cliente.html'):
         estado.estado = 0
         datos = get_object_or_404(cliente,pk=pk)
         formulario = ClienteForm(request.POST or None, instance = datos)
-        if form.is_valid():
+        if formulario.is_valid():
             estado.save()
             return redirect("plantilla")
     else: 
-        entrada = get_object_or_404(Especializacion, pk=pk)
-        formulario = EspecialidadForm(request.POST or None,  instance = datos)
+        datos = get_object_or_404(Especializacion, pk=pk)
+        formulario = ClienteForm(request.POST or None,  instance = datos)
     return render(request,plantilla, {'forms':formulario})
 
 
@@ -97,11 +95,11 @@ def modificar_medico(request,pk,base = 'modificar_medico.html'):
         estado.estado = 0
         datos = get_object_or_404(medico,pk=pk)
         formulario = medicoForm(request.POST or None, instance = datos)
-        if form.is_valid():
+        if formulario.is_valid():
             estado.save()
             return redirect("plantilla")
     else: 
-        entrada = get_object_or_404(medico, pk=pk)
+        datos = get_object_or_404(medico, pk=pk)
         formulario = medicoForm(request.POST or None,  instance = datos)
     return render(request,plantilla, {'forms':formulario})
 
@@ -111,11 +109,11 @@ def modificar_cita(request ,pk,base = 'modificar_cita.html'):
         estado.estado = 0
         datos = get_object_or_404(cita,pk=pk)
         formulario = citaForm(request.POST or None, instance = datos)
-        if form.is_valid():
+        if formulario.is_valid():
             estado.save()
             return redirect("plantilla")
     else: 
-        entrada = get_object_or_404(cita, pk=pk)
+        datos = get_object_or_404(cita, pk=pk)
         formulario = citaForm(request.POST or None,  instance = datos)
     return render(request,plantilla, {'forms':formulario})
 
@@ -123,6 +121,69 @@ def vista_especialidad(request, base = 'vista_especialidad.html'):
     datos = Especializacion.objects.filter(estado = 1)
     return render(request, base, {'datos': datos})
     
+def eliminar_especialidad(request, pk, base="eliminar_especialidad.html"):
+    if request.method == "POST":
+        estado = Especializacion.objects.get(pk=pk)
+        estado.estado = 0 
+        datos = get_object_or_404(Especializacion, pk=pk)
+        formulario = EspecialidadForm(request.POST or None, instance=datos)    
+        if formulario.is_valid():             
+            estado.save()
+            print(estado.id)
+            return redirect("plantilla")
+    else:
+        datos = get_object_or_404(Especializacion, pk=pk)
+        formulario = EspecialidadForm(request.POST or None, instance=datos)
+    return render(request, base, {'forms': formulario})
+
+def eliminar_medico(request, pk, plantilla="elimitar_medico.html"):
+    if request.method == "POST":
+        estado = medico.objects.get(pk=pk)
+        estado.estado = 0 
+        datos = get_object_or_404(medico, pk=pk)
+        formulario= medicoForm(request.POST or None, instance=datos)    
+        if formulario.is_valid():             
+            estado.save()
+            print(estado.id)
+            return redirect("plantilla")
+    else:
+        datos = get_object_or_404(medico, pk=pk)
+        formulario = medicoForm(request.POST or None, instance=datos)
+    return render(request, plantilla, {'forms': formulario})
+
+def eliminar_cita(request, pk, base="elimitar_citas.html"):
+    if request.method == "POST":
+        estado = cita.objects.get(pk=pk)
+        estado.estado = 0 
+        datos = get_object_or_404(cita, pk=pk)
+        formulario= citaForm(request.POST or None, instance=datos)    
+        if formulario.is_valid():             
+            estado.save()
+            print(estado.id)
+            return redirect("plantilla")
+    else:
+        datos = get_object_or_404(cita, pk=pk)
+        formulario = citaForm(request.POST or None, instance=datos)
+    return render(request,base, {'forms': formulario})
+
+def eliminar_cliente(request, pk, plantilla="elimitar_cliente.html"):
+    if request.method == "POST":
+        estado = cliente.objects.get(pk=pk)
+        estado.estado = 0 
+        datos = get_object_or_404(cliente, pk=pk)
+        formulario= ClienteForm(request.POST or None, instance=datos)    
+        if formulario.is_valid():             
+            estado.save()
+            print(estado.id)
+            return redirect("plantilla")
+    else:
+        datos = get_object_or_404(cliente, pk=pk)
+        formulario = cliente(request.POST or None, instance=datos)
+    return render(request, plantilla, {'forms': formulario})
+
+
+
+
 
 
     

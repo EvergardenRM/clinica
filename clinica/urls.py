@@ -29,5 +29,12 @@ urlpatterns = [
     path('modificar_cita/<int:pk>',views.modificar_cita, name='modificar_cita'),
     path('modificar_cliente/<int:pk>',views.modificar_cliente, name='modificar_cliente'),
     path('vista_especialidad/',views.vista_especialidad, name='vista_especialidad'),
+    path('eliminar_cliente/<int:pk>',views.eliminar_cliente, name='eliminar_cliente'),
+    path('eliminar_especialidad/<int:pk>',views.eliminar_especialidad, name='eliminar_especialidad'),
+    path('eliminar_cita/<int:pk>',views.eliminar_cita, name='eliminar_cita'),
+    path('eliminar_medico/<int:pk>',views.eliminar_medico, name='eliminar_medico'),
+    
+    
 
+   
 ]
