@@ -15,7 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.urls import reverse_lazy 
 from app.models import * 
-
+from django.contrib import messages
 
 def plantilla(request):
     return render(request, 'plantilla.html')
@@ -41,7 +41,7 @@ def crear_cliente(request, base = 'crear_cliente.html'):
         formulario = ClienteForm
     return render(request, base ,{'forms': formulario})
 
-def crear_medico(request , base = 'crear_cliente.html'):
+def crear_medico(request , base = 'crear_medico.html'):
     if request.method == 'POST':
         formulario = medicoForm(request.POST or None)
         if formulario.is_valid():
@@ -182,8 +182,62 @@ def eliminar_cliente(request, pk, plantilla="elimitar_cliente.html"):
     return render(request, plantilla, {'forms': formulario})
 
 
+def crear_usuario(request, base = 'crear_usuario.html'):
+    if request.method=="POST":
+        form = UserCreationForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form=UserCreationForm()
+    return render(request, base, {'forms':form})
 
+def crear_rol(request, base = 'crear_rol.html'):
+    if request.method=="POST":
+        form = RolForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form=RolForm()
+    return render(request, base, {'forms':form})
+
+def crear_rol_usuario(request, base = 'crear_rol_usuario.html'):
+    if request.method=="POST":
+        form = Rol_UsuarioForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form=Rol_UsuarioForm()
+    return render(request, base, {'forms':form})
 
 
 
     
+def login_view(request):
+    print(request.method)
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        #print(username)
+        #print(password)
+
+        user = authenticate(username=username , password=password)
+        if user:
+            print('usuario auntenticado')
+            login(request, user)
+            
+            return redirect('/')
+
+        else:
+            print('usuario no auntenticado')
+            
+
+
+    return render(request,"login.html",{})
+
+def logout_view(request):
+    logout(request)
+    
+    return redirect('login')

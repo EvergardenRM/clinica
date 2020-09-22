@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>John Palomeque</title>
+    <title>MEDICAL CENTER SAN MARTIN</title>
 
     <!-- Estilos y fuentes del template  -->
     <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
@@ -31,33 +31,56 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Inicio</a>
+              <a class="nav-link" href="/">Inicio</a>
             </li>
+      {% if request.user.is_authenticated %}
+        
+
+      {% if user.rol_usuario.rol.nombre == 'Administrador' %} 
             <li class="nav-item">
               <a class="nav-link" href="{% url 'crear_medico' %}">Medico</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'crear_cliente' %}">Cliente</a>
             </li>
+        
             <li class="nav-item">
               <a class="nav-link" href="{% url 'crear_cita' %}">Cita</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'vista_especialidad' %}">Especialidad</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'crear_usuario' %}">Usuario</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'crear_rol' %}">Rol</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'crear_rolusuario' %}">Rol_Usuario</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
+            </li>
+
+        {% endif %}    
+        {% endif %}
           </ul>
         </div>
       </div>
     </nav>
 
     <!-- Cabecera -->
-    <header class="masthead" style="background-image: url({% static 'img/about-bg.jpg' %})">
+    <header class="masthead" style="background-image: url({% static 'img/home-bg.jpg' %})">
       <div class="overlay"></div>
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="row ">
+          <div class="col-lg-8 col-md-10 mx-right">
             <div class="site-heading">
-              <h1>Acerca de</h1>
+              {% block contert %}
+              
+              {% endblock contert %}
+
               <span class="subheading">Biografía</span>
             </div>
           </div>
@@ -66,10 +89,7 @@
     </header>
 
     <!-- Contenido Principal -->
-    {% block contert %}
-      
-    {% endblock contert %}
-    
+      {{user.rol_usuario.rol.nombre}}
 
     <!-- Pié de página -->
     <footer>

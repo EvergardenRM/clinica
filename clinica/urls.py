@@ -33,8 +33,10 @@ urlpatterns = [
     path('eliminar_especialidad/<int:pk>',views.eliminar_especialidad, name='eliminar_especialidad'),
     path('eliminar_cita/<int:pk>',views.eliminar_cita, name='eliminar_cita'),
     path('eliminar_medico/<int:pk>',views.eliminar_medico, name='eliminar_medico'),
+    path('crear_usuario/',views.crear_usuario, name='crear_usuario'),
+    path('crear_roles/',views.crear_rol, name='crear_rol'),
+    path('crear_rol_usuario/',views.crear_rol_usuario, name='crear_rolusuario'),
+    path('login/',views.login_view, name='login'),
+    path('logout/',views.logout_view, name='logout'),
     
-    
-
-   
 ]

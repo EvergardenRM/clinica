@@ -1,0 +1,25 @@
+{% extends "plantilla.html" %}   
+
+{% block contert %}
+	<form method="POST">
+                    {% csrf_token %}
+                    <ul class="form-group row">
+                        <ul class="col-sm-2 col-form-label">
+                            <label for="username">Username</label>
+                            <label for="password">Password</label>
+                        </ul>              
+                        <ul class="col-sm-5">
+                        <input type="text" name="username" class="form-control " placeholder="username">
+                        <input type="password" name="password" class="form-control" placeholder="password">
+                    </ul>
+                        
+                    </ul>
+             
+                    <h1>
+
+
+                    </h1>
+                    <button type="submit" class="btn btn-success" >Login</button> <a href="{% url 'crear_usuario' %}" class="btn btn-success ">Register</a>
+                </form>          	
+{% endblock contert %}     
+	              
