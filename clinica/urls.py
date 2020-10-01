@@ -19,7 +19,7 @@ from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.plantilla, name='plantilla' ),
+    path('principal/', views.plantilla, name='plantilla' ),
     path('crear_especialidad/',views.crear_especialidad, name='crear_especialidad'),
     path('crear_cliente/',views.crear_cliente, name='crear_cliente'),
     path('crear_medico/',views.crear_medico, name='crear_medico'),
@@ -36,7 +36,7 @@ urlpatterns = [
     path('crear_usuario/',views.crear_usuario, name='crear_usuario'),
     path('crear_roles/',views.crear_rol, name='crear_rol'),
     path('crear_rol_usuario/',views.crear_rol_usuario, name='crear_rolusuario'),
-    path('login/',views.login_view, name='login'),
+    path('',views.login_view, name='login'),
     path('logout/',views.logout_view, name='logout'),
     
 ]

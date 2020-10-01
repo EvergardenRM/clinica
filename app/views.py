@@ -187,7 +187,7 @@ def crear_usuario(request, base = 'crear_usuario.html'):
         form = UserCreationForm(request.POST or None)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('login')
     else:
         form=UserCreationForm()
     return render(request, base, {'forms':form})
@@ -197,7 +197,7 @@ def crear_rol(request, base = 'crear_rol.html'):
         form = RolForm(request.POST or None)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('plantilla')
     else:
         form=RolForm()
     return render(request, base, {'forms':form})
@@ -207,7 +207,7 @@ def crear_rol_usuario(request, base = 'crear_rol_usuario.html'):
         form = Rol_UsuarioForm(request.POST or None)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('plantilla')
     else:
         form=Rol_UsuarioForm()
     return render(request, base, {'forms':form})
@@ -228,7 +228,7 @@ def login_view(request):
             print('usuario auntenticado')
             login(request, user)
             
-            return redirect('/')
+            return redirect('principal/')
 
         else:
             print('usuario no auntenticado')
