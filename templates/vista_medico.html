@@ -10,7 +10,7 @@
 
             <div class="ml-auto float-left">
                 <h1></h1>
-                <a class="btn btn-primary btn-sm"  role="button" href="{% url 'crear_cliente' %}">+ Crear</a>
+                <a class="btn btn-primary btn-sm"  role="button" href="{% url 'crear_medico' %}">+ Crear </a>
                 <h1></h1>
             </div>
             <div class="table-responsive ">
@@ -23,8 +23,8 @@
                         <th>Apellidos</th>
                         <th>Direccion</th>
                         <th>Numero Telefonico</th>
-                        <th>Correo  Electronico</th>
-                        <th>Edad</th>
+                        <th>Especializacion</th>
+                        
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -38,10 +38,9 @@
                             <td>{{ i.apellidos }}</td>
                             <td>{{ i.direccion }}</td>
                             <td>{{ i.num_telefono }}</td>
-                            <td>{{ i.correo }}</td>
-                            <td>{{ i.edad }}</td>
-                            <td><a class="btn-outline-primary btn-sm nav-link" href="{% url 'modificar_cliente' i.id %}">Editar</a></td>
-                            <td><a class="btn-outline-warning btn-sm nav-link" href=" {% url 'eliminar_cliente' i.id %} ">eliminar</a></td>
+                            <td>{{ i.id_especialidad}}</td>
+                            <td><a class="btn-outline-primary btn-sm nav-link" href="{% url 'modificar_medico' i.id %}">Editar</a></td>
+                            <td><a class="btn-outline-warning btn-sm nav-link" href=" {% url 'eliminar_medico' i.id %} ">eliminar</a></td>
 
                         </tr>
                     {% endfor %}

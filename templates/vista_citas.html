@@ -1,0 +1,55 @@
+{% extends 'plantilla.html' %}
+{%  load static %}
+{% block tema %}<h1>Citas</h1>{% endblock %}
+	    <!-- Contenido Principal -->
+        {% block contert %}
+	    <div class="container">
+        <div class="col-md-13" style="margin-top: 70px;">
+
+            <h2> Citas</h2>
+
+            <div class="ml-auto float-left">
+                <h1></h1>
+                <a class="btn btn-primary btn-sm"  role="button" href="{% url 'crear_cita' %}">+ Crear </a>
+                <h1></h1>
+            </div>
+            <div class="table-responsive ">
+                <table class="table table-striped">
+                    <thead class="bg-info">
+                    <tr>
+                        <th>#</th>
+                        <th>Numer de Citas</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Cliente</th>
+                        <th>Usuario</th>
+                        <th>Medico</th>
+                        <th>Tipo  de Consulta</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for i in datos %}
+                        <tr>
+                            <td>{{ i.id }}</td>
+                            <td>{{ i.numero_cita}}</td>
+                            <td>{{ i.fecha}}</td>
+                            <td>{{ i.hora}}</td>
+                            <td>{{ i.cliente_id}}</td>
+                            <td>{{ i.usuario_id}}</td>
+                            <td>{{ i.medico_id}}</td>
+                            <td>{{i.especializacion_id}}</td>
+                            <td><a class="btn-outline-primary btn-sm nav-link" href="{% url 'modificar_cita' i.id %}">Editar</a></td>
+                            <td><a class="btn-outline-warning btn-sm nav-link" href=" {% url 'eliminar_cita' i.id %} ">eliminar</a></td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+           
+        </div>
+        </div>	          
+{% endblock %}

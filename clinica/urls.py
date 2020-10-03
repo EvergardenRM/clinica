@@ -35,8 +35,17 @@ urlpatterns = [
     path('eliminar_medico/<int:pk>',views.eliminar_medico, name='eliminar_medico'),
     path('crear_usuario/',views.crear_usuario, name='crear_usuario'),
     path('crear_roles/',views.crear_rol, name='crear_rol'),
-    path('crear_rol_usuario/',views.crear_rol_usuario, name='crear_rolusuario'),
+    path('crear_rol_usuario/',views.crear_rol_usuario, name='crear_rol_usuario'),
     path('',views.login_view, name='login'),
     path('logout/',views.logout_view, name='logout'),
-    
+    path('vista_cliente/',views.vista_cliente, name='vista_cliente'),
+    path('vista_medico/',views.vista_medico, name='vista_medico'),
+    path('vista_rol/',views.vista_rol, name='vista_rol'),
+    path('vista_rol_usuario/',views.vista_rol_usuario, name='vista_rol_usuario'),
+    path('modificar_rol/<int:pk>',views.modificar_rol, name='modificar_rol'),
+    path('eliminar_rol/<int:pk>',views.eliminar_rol, name='eliminar_rol'),
+    path('modificar_rol_usuario/<int:pk>',views.modificar_rol_usuario, name='modificar_rol_usuario'),
+    path('eliminar_rol_usuario/<int:pk>',views.eliminar_rol_usuario, name='eliminar_rol_usuario'),
+    path('vista_citas/',views.vista_citas, name='vista_citas'),
 ]
+

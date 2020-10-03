@@ -147,6 +147,8 @@ class cita(models.Model):
     hora = models.CharField( max_length=100)
     cliente_id = models.ForeignKey(cliente, on_delete=models.CASCADE)
     medico_id = models.ForeignKey(medico, on_delete=models.CASCADE)
+    especializacion_id = models.ForeignKey(Especializacion, on_delete=models.CASCADE)
+    usuario_id = models.ForeignKey(User,  on_delete = models.CASCADE)
     estado = models.IntegerField(default = 2)
     class Meta:
         db_table = "tr_citas"
@@ -172,6 +174,7 @@ class Rol(models.Model):
 class Rol_Usuario(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
     rol = models.ForeignKey(Rol, on_delete=models.CASCADE)
+    estado = models.IntegerField(default =1 )
     class Meta:
         db_table = "rolusuario"
         verbose_name = "rolusuario"

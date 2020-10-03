@@ -87,6 +87,8 @@ class citaForm(forms.ModelForm):
             'hora',
             'cliente_id',
             'medico_id',
+            'usuario_id',
+            'especializacion_id'
         )
         labels = {
             'numero_cita' : 'No Cita' ,
@@ -94,6 +96,8 @@ class citaForm(forms.ModelForm):
             'hora' : 'Hora' ,
             'cliente_id' : 'Cliente',
             'medico_id' : 'Medico',
+            'usuario_id': 'Usuario',
+            'especializacion_id' : 'Especialidad' ,
 
         }
 
@@ -103,6 +107,8 @@ class citaForm(forms.ModelForm):
             'medico_id' : forms.Select(attrs={'class':'form-control'}),
             'fecha': forms.TextInput(attrs={'class':'form-control'}), 
             'hora':forms.TimeInput(attrs={'class':'form-control'}),
+            'usuario_id': forms.Select(attrs={'class':'form-control'}),
+            'especializacion_id' : forms.Select(attrs={'class':'form-control'}),
         }
 
 
